@@ -1,0 +1,14 @@
+name: webapp-color
+environment: dev
+deployment:
+  replicaCount: 1
+  image:
+    repository: josefloressv/webapp-color
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+  # nodePort: 30080

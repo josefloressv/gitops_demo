@@ -1,0 +1,15 @@
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    {{- include "webapp-color.labels" . }}
+kind: ConfigMap
+data:
+  FONT_COLOR: yellow
+  {{- if eq .Values.environment "prod" }}
+  BG_COLOR: pink
+  {{- else if eq .Values.environment "dev" }}
+  BG_COLOR: darkblue
+  {{- else }}
+  BG_COLOR: green
+  {{- end }}
