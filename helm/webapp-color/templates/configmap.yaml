@@ -7,7 +7,7 @@ metadata:
 kind: ConfigMap
 data:
   FONT_COLOR: yellow
-  MESSAGE: {{ .Values.message }}
+  MESSAGE: {{ .Values.message | quote }}
   {{- if eq .Values.environment "prod" }}
   BG_COLOR: pink
   {{- else if eq .Values.environment "dev" }}
