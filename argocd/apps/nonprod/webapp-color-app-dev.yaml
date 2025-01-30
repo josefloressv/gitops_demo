@@ -21,6 +21,8 @@ spec:
         value: "LoadBalancer"
       - name: "service.port"
         value: "80"
+      - name: "message"
+        value: "Development || "
   destination:
     server: https://kubernetes.default.svc
     namespace: dev

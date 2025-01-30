@@ -17,6 +17,8 @@ spec:
         value: "1.0.0"
       - name: "deployment.replicaCount"
         value: "2"
+      - name: "message"
+        value: "Staging || "
       # - name: "service.type"
       #   value: "LoadBalancer"
       # - name: "service.port"
