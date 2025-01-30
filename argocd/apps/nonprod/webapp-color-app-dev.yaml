@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: webapp-color
+  name: webapp-color-dev
   namespace: argocd
 spec:
   project: default
