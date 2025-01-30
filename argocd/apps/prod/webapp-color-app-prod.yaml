@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: webapp-color
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/josefloressv/gitops_demo.git
+    targetRevision: HEAD
+    path: helm/webapp-color/
+    helm:
+      parameters:
+      - name: "environment"
+        value: "prod"
+      - name: "deployment.image.tag"
+        value: "1.1.0"
+      - name: "deployment.replicaCount"
+        value: "2"
+      - name: "message"
+        value: "prod || "
+      - name: "service.type"
+        value: "LoadBalancer"
+      - name: "service.port"
+        value: "80"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true  
+    automated:
+      prune: true  # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
