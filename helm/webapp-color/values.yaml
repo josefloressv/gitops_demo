@@ -1,5 +1,6 @@
 name: webapp-color
 environment: dev
+message: "Hello from KCD Costa Rica 2025"
 deployment:
   replicaCount: 1
   image:
