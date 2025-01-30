@@ -14,7 +14,7 @@ spec:
       - name: "environment"
         value: "dev"
       - name: "deployment.image.tag"
-        value: "1.0.0"
+        value: "1.1.0"
       - name: "deployment.replicaCount"
         value: "2"
       - name: "service.type"
