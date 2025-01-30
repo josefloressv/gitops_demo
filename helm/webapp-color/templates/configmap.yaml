@@ -10,7 +10,7 @@ data:
   {{- if eq .Values.environment "prod" }}
   BG_COLOR: pink
   {{- else if eq .Values.environment "dev" }}
-  BG_COLOR: darkblue
+  BG_COLOR: "#1c262d"
   {{- else }}
   BG_COLOR: green
   {{- end }}
