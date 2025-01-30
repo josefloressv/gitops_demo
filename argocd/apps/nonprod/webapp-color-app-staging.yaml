@@ -6,24 +6,24 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/josefloressv/gitops
+    repoURL: https://github.com/josefloressv/gitops_demo.git
     targetRevision: HEAD
     path: helm/webapp-color/
     helm:
       parameters:
       - name: "environment"
-        value: "dev"
+        value: "staging"
       - name: "deployment.image.tag"
         value: "1.0.0"
       - name: "deployment.replicaCount"
         value: "2"
-      - name: "service.type"
-        value: "LoadBalancer"
-      - name: "service.port"
-        value: "80"
+      # - name: "service.type"
+      #   value: "LoadBalancer"
+      # - name: "service.port"
+      #   value: "80"
   destination:
     server: https://kubernetes.default.svc
-    namespace: dev
+    namespace: staging
 
   syncPolicy:
     syncOptions:
