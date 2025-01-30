@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-svc
   labels:
-    {{- include "webapp-color.labels" . }}
+    app: {{ .Values.name }}
+    environment: {{ .Values.environment }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -14,4 +15,4 @@ spec:
     nodePort: {{ .Values.service.nodePort }}
     {{- end }}
   selector:
-    app: {{ .Release.Name }}
+    app: {{ .Values.Name }}

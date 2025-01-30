@@ -2,17 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    {{- include "webapp-color.labels" . }}
+    app: {{ .Values.name }}
+    environment: {{ .Values.environment }}
   name: {{ .Release.Name }}-deploy
 spec:
   replicas: {{ .Values.deployment.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: {{ .Values.name }}
   template:
     metadata:
       labels:
-        {{- include "webapp-color.labels" . | nindent 4 }}
+        app: {{ .Values.name }}
+        environment: {{ .Values.environment }}
     spec:
       containers:
       - image: {{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag | default "latest" }}
